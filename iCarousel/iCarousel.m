@@ -471,6 +471,8 @@ NSComparisonResult compareViewDepth(UIView *view1, UIView *view2, iCarousel *sel
     fadeRange = [self valueForOption:iCarouselOptionFadeRange withDefault:fadeRange];
     fadeMinAlpha = [self valueForOption:iCarouselOptionFadeMinAlpha withDefault:fadeMinAlpha];
 
+//    NSLog(@"\n__________________________\nfadeMin: %f\nfadeMax: %f\nfadeRange: %f\nfadeMinAlpha: %f\n__________________________\n", fadeMin, fadeMax, fadeRange, fadeMinAlpha);
+
 #ifdef ICAROUSEL_MACOS
     
     if (_vertical)
@@ -490,6 +492,10 @@ NSComparisonResult compareViewDepth(UIView *view1, UIView *view2, iCarousel *sel
     {
         factor = fadeMin - offset;
     }
+
+//    CGFloat result = 1.0 - MIN(factor, fadeRange) / fadeRange * (1.0 - fadeMinAlpha);
+//    NSLog(@"\noffset: %f, factor: %f, result: %f\n", offset, factor, result);
+
     return 1.0 - MIN(factor, fadeRange) / fadeRange * (1.0 - fadeMinAlpha);
 }
 
